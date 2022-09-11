@@ -1,0 +1,84 @@
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'maven'
+}
+
+group 'ros'
+version '1.0.1'
+
+sourceCompatibility = 1.8
+
+
+mainClassName = 'Talker'
+
+sourceSets {
+    main {
+         java {
+            srcDirs = ['src']
+         }
+    }
+
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'Talker'
+        )
+    }
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use 'jcenter' for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    // maven {url "http://repo1.maven.org/maven2/org/apache/apache/"}
+    mavenCentral()
+    maven {
+        url uri('../repo')
+    }
+    mavenLocal()
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      //设置插件的GAV参数
+      pom.groupId = 'com.segway.ros'
+      pom.artifactId = 'jnitest'
+      pom.version = '1.0.0'
+      //文件发布到下面目录
+      repository(url: uri('./repo'))
+    }
+  }
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    // The production code uses the SLF4J logging API at compile time
+    // compile 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'com.segway.ros:rosjni-linux-aarch64:1.0.0'
+    testImplementation 'junit:junit:4.12'
+}
+
+task copyJars(type: Copy) {
+    from configurations.runtimeClasspath
+    into "${buildDir}/libs"
+}
+
+task execLibs(type: Exec) {
+    commandLine './scripts/lib2libs.sh'
+}
+
+gradle.buildFinished {
+    './scripts/lib2libs.sh'.execute()
+}
+
+tasks.findByName('jar').dependsOn copyJars
