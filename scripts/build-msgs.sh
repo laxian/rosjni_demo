@@ -28,10 +28,10 @@ PACKAGES="roslib
  	    fk_node
 	    "
 
-CP=`rospack find rosjava_jni`/src
+CP=`rospack find hello_java`/src
 
 cd $CP
-find . -name "*.java" | xargs javac -source 7 -cp $CP
+find . -name "*.java" | xargs javac -classpath ../build/libs/rosjni-linux-aarch64-1.0.0.jar -source 7 -cp $CP
 cd ..
 make
 

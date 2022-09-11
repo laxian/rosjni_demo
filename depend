@@ -1,4 +1,12 @@
 # declare msg/srv dependencies here
 # one per line
+std_msgs/String.msg
+std_msgs/Byte.msg
+std_msgs/ByteMultiArray.msg
+std_msgs/MultiArrayDimension.msg
+std_msgs/MultiArrayLayout.msg
 
+hello_java/TestBadDataTypes.msg
+hello_java/TestDataTypes.msg
+hello_java/TestTwoInts.srv
 hello_java/AddTwoInts.srv
