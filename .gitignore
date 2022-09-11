@@ -5,14 +5,14 @@ bin/
 build/
 catkin/
 catkin_generated/
-cmake/
+# cmake/
 CMakeFiles/
 devel/
 gtest/
 lib/
 repo/
 msg_gen/
-.cmake
+# .cmake
 CMakeCache.txt
 install_manifest.txt
 Makefile
