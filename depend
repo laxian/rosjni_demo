@@ -1,0 +1,4 @@
+# declare msg/srv dependencies here
+# one per line
+
+hello_java/AddTwoInts.srv

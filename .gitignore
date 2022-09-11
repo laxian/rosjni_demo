@@ -17,3 +17,4 @@ CMakeCache.txt
 install_manifest.txt
 Makefile
 cmake_install.cmake
+*.pyc
