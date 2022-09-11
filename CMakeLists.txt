@@ -1,12 +1,8 @@
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
-rosbuild_init()
-
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
-
 
 set(ROS_BUILD_TYPE Debug)
 rosbuild_init()
@@ -14,7 +10,7 @@ rosbuild_init()
 rosbuild_genmsg()
 rosbuild_gensrv()
 
-add_java_source_dir(${PROJECT_SOURCE_DIR}/test)
+add_java_source_dir(${PROJECT_SOURCE_DIR}/src)
 
 rospack_add_java_executable(bin/Testee Testee)
 rospack_add_java_executable(bin/Talker Talker)
