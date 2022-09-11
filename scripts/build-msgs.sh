@@ -31,7 +31,7 @@ PACKAGES="roslib
 CP=`rospack find hello_java`/src
 
 cd $CP
-find . -name "*.java" | xargs javac -classpath ../build/libs/rosjni-linux-aarch64-1.0.0.jar -source 7 -cp $CP
+find . -name "*.java" | xargs javac ../build/libs/rosjni-linux-aarch64-1.0.0.jar -source 7 -cp $CP:../build/libs/rosjni-linux-aarch64-1.0.0.jar
 cd ..
 make
 
