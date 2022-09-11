@@ -1,5 +1,13 @@
 #!/bin/bash
 
+pushd
+cd ../..
+catkin_make
+source ./devel/setup.bash
+popd
+
+pwd
+
 cd scripts
 ./build-deps.sh
 
